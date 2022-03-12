@@ -22,22 +22,25 @@
         <div class="container mt-xl-3 d-flex align-items-center flex-column">
 
             <h1 class="text-center">Рыбки</h1>
-<!-- 
+            <!-- 
             <div class="d-flex flex-column mt-xl-5" v-if='showInputName'>
                 <label class="form-label h5">Имя пользователя</label>
                 <input class="form-control form-control-lg" type="text" v-model="inputName">
                 <button class="btn mt-xl-3 btn-primary  btn-lg" @click="setPlayersName">Отправить</button>
             </div> -->
 
-            <div class="game" v-if='true'>
-                <h2>Имя пользователя: {{playerName}}</h2>
-                <div class="game_field">
-                   <div class="red_fish"></div>
-                   <div class="pink_fish"></div>
-                </div>
-               
-            </div>
+            <button class="btn mt-xl-3 btn-primary btn-lg" @click="startGame">Начать игру</button>
 
+
+            <div class="game" v-if='showGame'>
+                <h2>Имя пользователя: {{playerName}}</h2>
+                <h3>Таймер: {{timer}}</h3>
+                <h3>Очки: {{score}}</h3>
+                <div class="game_field" :style="{ height:gameFieldHeight, width:gameFieldWidth }">
+                    <div v-for="(fish, index) in fishes" :key="fish.id" :class="[fish.type, {coup:fish.coup}]"
+                        :style="{left: fish.left+fish.px, top: fish.top+fish.px}" @click="clickFish(index)"></div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

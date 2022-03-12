@@ -4,24 +4,37 @@
 }
 
 .game_field {
-    height: 800px;
-    width: 1440px;
+    position: relative;
     background-image: url('../img/background_fishes.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .red_fish {
+    position: absolute;
     height: 100px;
     width: 130px;
     background-image: url('../img/red_fish.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
-.pink_fish {
+.golden_fish {
+    position: absolute;
     height: 100px;
-    width: 280px;
-    background-image: url('../img/legendary_fish.png');
+    width: 160px;
+    background-image: url('../img/golden_fish.png');
     background-repeat: no-repeat;
     background-size: contain;
+}
+.green_fish {
+    position: absolute;
+    height: 100px;
+    width: 130px;
+    background-image: url('../img/green_fish.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.coup {
+    transform: scaleX(-1);
 }
