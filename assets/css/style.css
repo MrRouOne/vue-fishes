@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.game_field {
+    height: 800px;
+    width: 1440px;
+    background-image: url('../img/background_fishes.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.red_fish {
+    height: 100px;
+    width: 130px;
+    background-image: url('../img/red_fish.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.pink_fish {
+    height: 100px;
+    width: 280px;
+    background-image: url('../img/legendary_fish.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
