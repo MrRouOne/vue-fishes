@@ -19,28 +19,45 @@
 
 <body>
     <div id="app">
-        <div class="container mt-xl-3 d-flex align-items-center flex-column">
+        <div class="container mt-xl-3">
 
             <h1 class="text-center">Рыбки</h1>
-            <!-- 
+
             <div class="d-flex flex-column mt-xl-5" v-if='showInputName'>
-                <label class="form-label h5">Имя пользователя</label>
+                <label class="form-label h3">Имя пользователя</label>
                 <input class="form-control form-control-lg" type="text" v-model="inputName">
                 <button class="btn mt-xl-3 btn-primary  btn-lg" @click="setPlayersName">Отправить</button>
-            </div> -->
-
-            <button class="btn mt-xl-3 btn-primary btn-lg" @click="startGame">Начать игру</button>
-
-
-            <div class="game" v-if='showGame'>
-                <h2>Имя пользователя: {{playerName}}</h2>
-                <h3>Таймер: {{timer}}</h3>
-                <h3>Очки: {{score}}</h3>
-                <div class="game_field" :style="{ height:gameFieldHeight, width:gameFieldWidth }">
-                    <div v-for="(fish, index) in fishes" :key="fish.id" :class="[fish.type, {coup:fish.coup}]"
-                        :style="{left: fish.left+fish.px, top: fish.top+fish.px}" @click="clickFish(index)"></div>
-                </div>
             </div>
+
+
+            <transition name="fade">
+                <div v-if='showGame'>
+                    <button class="btn mt-xl-3 btn-primary btn-lg" @click="startGame">Начать игру</button>
+                    <h2>Имя пользователя: {{playerName}}</h2>
+                    <h3 class="timer">Таймер: {{timer}}</h3>
+                    <h3>Очки: {{score}}</h3>
+                </div>
+            </transition>
+            <transition name="fade">
+                <div class="game d-flex  flex-row" v-if='showGame'>
+                    <div class="game_field" :style="{ height:gameFieldHeight, width:gameFieldWidth }">
+                        <div v-for="(fish, index) in fishes" :key="fish.id" :class="[fish.type, {coup:fish.coup}]"
+                            :style="{left: fish.left+fish.px, top: fish.top+fish.px, height:fish.height+fish.px, width:fish.width+fish.px, 'backgroundImage':fish.img, transition:fish.transition,opacity:fish.opacity,}"
+                            @click="clickFish(index)"></div>
+                    </div>
+                    <div class="scoreBoard list-group">
+                        <div class="list-group-item text-center">
+                            <h4>Таблица рекордов</h4>
+                        </div>
+                        <div v-if="results.length == 0" class="list-group-item text-center">Здесь пока пусто</div>
+                        <div v-for="(result,index) in sortResults" @click="clickFish(index)"
+                            class="list-group-item text-center" :style="{'backgroundColor':result.background}">
+                            {{index+1}}. {{result.playerName}}: {{result.score}}</div>
+                    </div>
+
+                </div>
+            </transition>
+
         </div>
     </div>
 </body>

@@ -12,24 +12,18 @@
 
 .red_fish {
     position: absolute;
-    height: 100px;
-    width: 130px;
     background-image: url('../img/red_fish.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
 .golden_fish {
     position: absolute;
-    height: 100px;
-    width: 160px;
     background-image: url('../img/golden_fish.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
 .green_fish {
     position: absolute;
-    height: 100px;
-    width: 130px;
     background-image: url('../img/green_fish.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -37,4 +31,24 @@
 
 .coup {
     transform: scaleX(-1);
+}
+
+.timer {
+    transition-delay: 1s;
+}
+
+.scoreBoard {
+    margin-left: 30px;
+}
+
+.list-group-item-header {
+    margin-bottom: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
